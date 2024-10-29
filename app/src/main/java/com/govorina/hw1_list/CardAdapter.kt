@@ -25,9 +25,9 @@ class CardAdapter() : RecyclerView.Adapter<CardViewHolder>(){
         notifyDataSetChanged()
     }
 
-    fun addItems(item: Int) {  // use diffUtil
+    fun addItems(item: Int) {  
         numberList.add(item)
-        notifyDataSetChanged()  // here instead use diffUti, feed it with newer list and connect to adapter
+        notifyDataSetChanged() 
     }
 
     fun getItems(): ArrayList<Int> {
