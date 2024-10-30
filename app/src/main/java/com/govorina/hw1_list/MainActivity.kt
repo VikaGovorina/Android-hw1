@@ -25,6 +25,7 @@ class MyActivity : AppCompatActivity() {
 
         if (savedInstanceState != null) {
             adapter.setItems(savedInstanceState.getIntegerArrayList("numberList") ?: ArrayList())
+            adapter.set_is_even(savedInstanceState.getBoolean("is_even", true))
         }
         else {
             adapter.setItems(ArrayList())
@@ -34,5 +35,6 @@ class MyActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putIntegerArrayList("numberList", adapter.getItems())
+        outState.putBoolean("is_even" ,adapter.get_is_even())
     }
 }

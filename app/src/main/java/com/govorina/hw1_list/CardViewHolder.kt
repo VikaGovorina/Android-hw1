@@ -6,16 +6,22 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CardViewHolder(view: View) : RecyclerView.ViewHolder(view){
+class CardViewHolder(view: View, adapter: CardAdapter) : RecyclerView.ViewHolder(view){
     val image = view.findViewById<ImageView>(R.id.image_view)
     val text = view.findViewById<TextView>(R.id.text_1)
 
-    fun bind(num: Int) {
+    init {
+        view.setOnClickListener {
+            adapter.color_change()
+        }
+    }
+
+    fun bind(num: Int, is_even: Boolean) {
         text.text = "$num"
-        if (num % 2 == 0) {
-            image.setBackgroundResource(R.color.red)
+        if (is_even) {
+            image.setBackgroundResource(if (num % 2 == 0) R.color.red else R.color.blue)
         } else {
-            image.setBackgroundResource(R.color.blue)
+            image.setBackgroundResource(if (num % 2 == 0) R.color.blue else R.color.red)
         }
     }
 }
